@@ -1,0 +1,39 @@
+<div class="celebration-container">
+    <div class="celebration-header">
+      <h1 class="mega-title">🎉 LIVE UPDATES 🎉</h1>
+      <div class="confetti-animation"></div>
+    </div>
+    
+    <div class="connection-status">
+      <span [class]="isConnected ? 'connected' : 'disconnected'">
+        {{ isConnected ? '✅ CONNECTED!' : '⚠️ RECONNECTING...' }}
+      </span>
+    </div>
+  
+    <div class="posts-container">
+      <div *ngIf="posts.length === 0" class="huge-loading">
+        <div class="spinner"></div>
+        <h2>LOADING AMAZING CONTENT...</h2>
+      </div>
+      
+      <div 
+        *ngFor="let post of posts" 
+        class="post-card" 
+        [class.highlight]="post.isUpdated">
+        
+        <div class="post-header">
+          <h2>{{ post.title }}</h2>
+          <div *ngIf="post.isUpdated" class="new-badge">NEW!</div>
+        </div>
+        
+        <p>{{ post.content }}</p>
+        
+        <div class="post-meta">
+          <button (click)="likePost(post.id)" class="like-button">
+            ❤️ {{ post.likesCount }}
+          </button>
+          <span class="date">{{ post.createdAt | date }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
