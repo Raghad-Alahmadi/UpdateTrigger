@@ -1,0 +1,6 @@
+@UpdateTrigger_HostAddress = http://localhost:5045
+
+GET {{UpdateTrigger_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
